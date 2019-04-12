@@ -1,0 +1,54 @@
+<div class="d-flex flex-wrap "> 
+    <div class="card m-3 border-radius"  style="width: 9rem;">
+      <div class="card-body text-center ">
+        <h5 class="card-title">{{budget.name}}</h5>        
+        <p class="card-text">{{budget.money | currency}}</p>
+          <div class=" input-group input-group-sm ">
+              <div class="input-group-prepend ">             
+                </div>
+                <form >          
+                <input               
+                #budgetItemInput  
+                id={{budget.id}}                
+                type="number" 
+                class="form-control hren"  
+                aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                placeholder="Enter a sum:"  
+                >    
+                <div class='mt-3'>
+                  <button type='reset'
+                  (click)=plusMoney(budgetItemInput.value,budgetItemInput.id)
+                     class="btn btn-primary mr-3"               
+                     >+</button>
+                 <button type='reset'
+                  (click)=minusMoney(budgetItemInput.value,budgetItemInput.id)
+                    class="btn btn-primary" 
+                    >-</button>
+                </div>
+              </form>  
+          </div> 
+           
+            
+      </div>
+    </div>  
+</div> 
+
+
+
+
+  
+ 
+  <!-- <div *ngFor="let item of obj2; index as i ">
+    <div class="card m-3 border-radius" style="width: 9rem;">
+      <div class="card-body text-center ">
+        <h5 class="card-title">{{item.money}}</h5>        
+        <p class="card-text">{{item.date | date: 'd/MM/yy h:mm'}}</p>
+          <div class=" input-group input-group-sm mb-3">
+              <div class="input-group-prepend ">             
+                </div>                  
+          </div>            
+            
+      </div>
+    </div>   
+</div> -->
+ 

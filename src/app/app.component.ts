@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  time = Date.now();
+  hren =11;
   title = 'coin2';
+  
+
 }

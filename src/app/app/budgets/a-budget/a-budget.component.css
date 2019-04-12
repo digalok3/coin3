@@ -1,0 +1,20 @@
+.dashed {
+    border: dashed;   
+    border-width: thin;
+    border-radius: 20px;
+    color: darkgray; 
+}
+
+.border-radius {
+    border-radius: 20px;     
+}
+
+.hren {
+    font-size: 0.7rem;
+}
+
+input {
+    background-color: transparent;   
+    border-width: 1px;
+    border-radius: 10px 100px / 120px;
+}

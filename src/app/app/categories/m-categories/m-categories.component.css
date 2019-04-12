@@ -1,0 +1,20 @@
+.dashed {
+    border: dashed;   
+    border-width: thin;
+    border-radius: 20px;
+    color: darkgray; 
+}
+
+.border-radius {
+    border-radius: 20px;     
+}
+
+.hren {
+    font-size: 0.7rem;
+}
+
+/* input::placeholder {
+    background-color: transparent;   
+    color: rgb(14, 219, 31);
+} */
+
