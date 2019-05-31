@@ -1,39 +1,52 @@
-    <div class="m-3 ">
-      <div class="card ma-3  " style="width: 14rem;">
-        <img width="100px" height="200px" src={{category.img}} class="card-img-top" alt="...">
-        <div class="card-body text-center">
+    <div class="m-3 ">      
+      <div class="card border-radius hrenota" style="width: 16rem;">        
+        <div class="card-body  text-center">
+          <div *ngIf='isEdit' class="text-right">
+              <i  routerLink="/category/edit/{{category.id}}" class="fa fa-pencil" 
+              aria-hidden="true"></i><i (click)=deleteCategory() class="fa fa-times ml-2" aria-hidden="true"></i> <br>
+          </div>         
+            <img width="100px" height="100px" src={{category.photoURL||photoUrl}} class="card-img-center mb-2" alt="...">
+            <div class="d-flex flex-row-reverse bd-highlight">
+                           
+            </div>
           <h5 class="card-title">{{category.name}}</h5>
           <p class="card-text">{{category.money | currency}}</p>
           <div class="container">
               <div class="row">
-                <div class="col-9">
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">             
+                <div class="col-8">
+                    <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">            
                           </div>
-                          <input type="number" 
-                          class="form-control"
+                          <input 
+                          #inputValue                          
+                          type="number" 
+                          class="form-control hren"
                            aria-label="Small"
                             aria-describedby="inputGroup-sizing-sm"
-                            placeholder="Enter a sum: ">                 
+                            placeholder="Введите сумму: ">                 
                         </div> 
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">          
+                        <div class="input-group">
+                            <div class="input-group-prepend">    
                             </div>
-                            <select class="custom-select" id="budget.id">   
-                              <option *ngFor="let budget of budgets">{{budget.name}}</option>
+                            <select 
+                            #selectedCategory
+                            class="custom-select hren" 
+                            id={{category.id}}>   
+                              <option                                         
+                               *ngFor="let budget of budgets">{{budget.name}}</option>
                              </select>
                           </div>
-                </div>
-                <div class="col-1">
-                    <br>
-                    <a href="#" class="btn btn-primary ">+</a>  
-                </div>
-              </div>         
+              </div>              
+                <div class="col-1 mt-2 ">               
+                    <button type='reset' (click)=addSum(selectedCategory.id,inputValue.value,selectedCategory.value) class="btn btn-info ">+</button>  
+                 
+                </div>   
+                               
+              </div>        
         </div>
-        <div class="progress">
-            <div class="progress-bar w-25" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        <p><br> <ngb-progressbar *ngIf="category.moneyLimit>0" showValue="true"  class='' [type]='getCurrentType()' [value]="currentLimit()"></ngb-progressbar></p>
           </div>
       </div>
     </div>
   
+

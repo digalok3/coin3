@@ -1,3 +1,5 @@
+
+
 export const dbBudgets = [{
     name: 'Mikhail',
     money: 300,
@@ -23,22 +25,19 @@ export const dbCategories = [
     {
       name: 'Food',
       money: 323,
-      progressBar: 1,
-      img: 'https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+      progressBar: 1,      
       id: 1
     },
     {
       name: 'Rent',
       money: 600,
-      progressBar: 0.3,
-      img: 'https://images.unsplash.com/photo-1464082354059-27db6ce50048?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+      progressBar: 0.3,      
       id: 2
     },
     {
       name: 'Car',
       money: 111,
-      progressBar: 0.5,
-      img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+      progressBar: 0.5,      
       id: 3
     }
     ]

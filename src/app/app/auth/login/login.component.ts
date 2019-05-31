@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
   onSubmit()  {
     this.authService.login(this.email, this.password)
     .then(res => {
-      this.alertService.alertOk('Now you are logged in!');
-      this.router.navigate(['/'])
+      if(this.authService.authenticated) {
+        this.alertService.alertOk('Now you are logged in!');
+        this.router.navigate(['/'])
+      }
     })
     .catch(err => {
       this.alertService.alertOk('Something went wrong!');

@@ -1,27 +1,6 @@
 <div class="d-flex flex-wrap ">
-  <app-a-category *ngFor="let category of categories; index as i" [category]="categories[i]" [budgets]='budgets' >
+  <app-a-category [isEdit]='isEdit' *ngFor="let category of categories; index as i" [category]="categories[i]" [budgets]='budgets' >
   </app-a-category>
 
-  <div class="m-3 ">
-    <div class="card ma-3 dashed  " style="width: 14rem;">  
-      <div class="card-body text-center">
-        <h6 class="card-title text-secondary">Add a new category: </h6>       
-        <form >
-          <input 
-          type="text" 
-          class=" form-control hren"            
-          aria-label="Small" 
-          aria-describedby="inputGroup-sizing-sm"            
-          name="categoryName"
-          ngModel
-          placeholder="Enter a name:"                        
-          required                 
-        >     
-    <button class="btn btn-success mr mt-3">+</button> 
-  </form>         
-      </div>     
-        </div>
-    </div>
 </div> 
-
 

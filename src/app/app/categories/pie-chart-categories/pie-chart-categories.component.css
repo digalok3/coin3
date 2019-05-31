@@ -1,0 +1,20 @@
+@media (min-width: 300px) {
+    .chart{
+        width:400px;
+        height:200px;
+    }
+}
+/*Large phone Size*/
+@media (min-width: 600px) {
+    .chart{
+        width:600px;
+        height: 300px;
+    }
+}
+/*Tablet and Standard Size*/
+@media (min-width: 1920px) {
+        .chart{
+        width:800px;
+        height:400px;
+    }
+}

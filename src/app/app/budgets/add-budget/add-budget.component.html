@@ -1,0 +1,25 @@
+<div class="card m-3 dashed" style="width: 9rem;">    
+    <div class="card-body text-center">
+      <h6 class="card-title text-secondary">Добавить новый счет...</h6> 
+      <div class="input-group input-group-sm mb-2">
+        <div class="form-group">
+          <div class="input-group-prepend ">            
+            </div>
+                  <form (ngSubmit)=addBudget() #f="ngForm">
+                  <input 
+                  type="text" 
+                  class=" form-control hren"            
+                  aria-label="Small" 
+                  aria-describedby="inputGroup-sizing-sm"            
+                  name="budgetName"
+                  ngModel
+                  placeholder="Введите имя:"             
+                  required                 
+                >     
+            <button [disabled]="!f.valid" class="btn btn-success mr mt-3">+</button> 
+          </form> 
+        </div>
+        </div>     
+    </div>
+    
+  </div> 

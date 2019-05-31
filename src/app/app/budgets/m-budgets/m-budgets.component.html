@@ -1,31 +1,3 @@
 <div class="d-flex flex-wrap ">
-    
-    <app-a-budget *ngFor="let budget of budgets; index as i" [budget]="budgets[i]"  ></app-a-budget>
-
-    <div class="card m-3 dashed" style="width: 9rem;">    
-            <div class="card-body text-center">
-              <h6 class="card-title text-secondary">Add a new budget...</h6> 
-              <div class="input-group input-group-sm mb-2">
-                <div class="form-group">
-                  <div class="input-group-prepend ">            
-                    </div>
-                          <form (ngSubmit)=addBudget() #f="ngForm">
-                          <input 
-                          type="text" 
-                          class=" form-control hren"            
-                          aria-label="Small" 
-                          aria-describedby="inputGroup-sizing-sm"            
-                          name="budgetName"
-                          ngModel
-                          placeholder="Enter a name:"                        
-                          required                 
-                        >     
-                    <button [disabled]="!f.valid" class="btn btn-success mr mt-3">+</button> 
-                  </form> 
-                </div>
-                </div>     
-            </div>
-            
-          </div> 
-
+    <app-a-budget [isEdit]='isEdit' *ngFor="let budget of budgets; index as i" [budget]="budgets[i]"  ></app-a-budget>
 </div>

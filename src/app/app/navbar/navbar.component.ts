@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
+  rates: any;
+  EUR: number;
 
   constructor(
     private authService: AuthService,
@@ -20,11 +22,38 @@ export class NavbarComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
+    this.authService.getAuth().subscribe(auth=> {
+      if (auth) {
+       this.isLoggedIn = true  
+        this.loggedInUser = auth.email } 
+        else {
+          this.isLoggedIn = false;
+        }
+    });
+
+    fetch('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').then(res=> 
+    res.json())
+    .then(resp => this.rates = resp)
   }
+
+    calculateUSD() {
+      if(this.rates) {
+        return (Math.floor((this.rates.rates.RUB)*100)/100)
+      }
+    }
+
+
+    calculateEUR() {
+      if(this.rates) {
+        return (Math.floor((1 / this.rates.rates.EUR*this.rates.rates.RUB)*100)/100)
+      }
+
+    }
 
   onLogoutClick() {
     this.authService.logout();
+    this.isLoggedIn = false;
     this.alertService.alertOk('Now you are logged out!')
     this.router.navigate(['/login']);
   }

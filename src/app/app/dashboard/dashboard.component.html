@@ -1,0 +1,62 @@
+<h1 class='ml-3'> Текущий баланс</h1> <hr>
+<app-balance></app-balance>
+
+<h1 class='ml-3'>Счета</h1> <hr>
+<app-m-budgets ></app-m-budgets>
+
+
+<div *ngIf='isFirstLoggedIn' class="ml-4 hint">
+    <div>
+        <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+        <h1>Подсказка!</h1>
+    </div> 
+     Здесь вы будете видеть ваш текущий баланс по разным счетам(бюджетам). Попробуйте добавить деньги в один из бюджетов.
+     <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
+</div>
+
+<h1 class='ml-3'>Категории расходов</h1> <hr>
+<app-m-categories [isEdit]=false></app-m-categories>
+
+<div *ngIf='isFirstLoggedIn' class="ml-4 hint mb-4">
+        <div>
+            <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+            <h1>Hint!</h1>
+        </div> 
+         *This is categories. You can add here a category of expenses e.g. 'Food', 'Rent', 'Car'. You can also choose the budget from which the money will be withdrawn. Go to <strong class='link' routerLink="/categories" nav>Categories</strong>  and there you will be able to add your own categories and change the existing ones.(You will not see this message again. It will disappear after second login...)
+         <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
+    </div>
+ 
+
+
+
+
+
+
+      <!-- <h1 class='ml-3'> Текущий баланс</h1>
+<app-balance></app-balance>
+
+<h1 class='ml-3'>Учет доходов</h1>
+<app-m-budgets ></app-m-budgets>
+
+
+<div *ngIf='isFirstLoggedIn' class="ml-4 hint">
+    <div>
+        <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+        <h1>Hint!</h1>
+    </div> 
+     *This is budgets. All your incomes will be here! Try and add some money to a budget. All incomes to a budget will be tracked. Go to <strong class='link' routerLink="/budgets" nav>Budgets</strong>  and there you will be able to add your own budgets and change the existing ones. (You will not see this message again. It will disappear after second login...)
+     <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
+</div>
+
+<h1 class='ml-3'>Учет расходов</h1> 
+<app-m-categories [isEdit]=false></app-m-categories>
+
+<div *ngIf='isFirstLoggedIn' class="ml-4 hint mb-4">
+        <div>
+            <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+            <h1>Hint!</h1>
+        </div> 
+         *This is categories. You can add here a category of expenses e.g. 'Food', 'Rent', 'Car'. You can also choose the budget from which the money will be withdrawn. Go to <strong class='link' routerLink="/categories" nav>Categories</strong>  and there you will be able to add your own categories and change the existing ones.(You will not see this message again. It will disappear after second login...)
+         <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
+    </div> -->
+ 

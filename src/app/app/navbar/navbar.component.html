@@ -1,23 +1,4 @@
-<!-- <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Settings</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Graphs</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Budgets</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" >{{time | date}}</a>
-    </li>
-   
-  </ul> -->
-
-  <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+  <nav class="navbar navbar-expand-md navbar-dark bg-info mb-4">
       <div class="container">
         <a routerLink="/" class="navbar-brand">
           Coin Project
@@ -27,20 +8,35 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarMain">         
           <ul class="navbar-nav ml-auto">
-            <li *ngIf="!isLoggedIn && showRegister" class="nav-item">
-              <a routerLink="/register" class="nav-link">Register</a>
+              <li *ngIf="isLoggedIn" class="nav-item">
+                  <a routerLink="/" class="nav-link font-weight-bold">Главная</a>
+                </li>
+              <li *ngIf="isLoggedIn" class="nav-item">
+                  <a routerLink="/budgets" class="nav-link">Доходы и счета</a>
+                </li>
+              <li *ngIf="isLoggedIn" class="nav-item">
+                  <a routerLink="/categories" class="nav-link">Расходы</a>
+                </li>
+            <li *ngIf="!isLoggedIn " class="nav-item">
+              <a routerLink="/register" class="nav-link">Регистрация</a>
             </li>
-            <li *ngIf="!isLoggedIn && showRegister" class="nav-item">
-              <a routerLink="/login" class="nav-link">Login</a>
+            <li *ngIf="!isLoggedIn " class="nav-item">
+              <a routerLink="/login" class="nav-link">Вход</a>
             </li>
+            <!-- <li *ngIf="isLoggedIn" class="nav-item">
+              <a routerLink="/faq" class="nav-link">Guide</a>
+            </li>            -->
+              <li *ngIf="isLoggedIn" class="nav-item">
+                  <a class="nav-link">{{loggedInUser}}</a>
+                </li>
+              <li *ngIf="isLoggedIn" class="nav-item ">
+                  <a class="nav-link currency font-weight-bold">USD {{calculateUSD()}}</a>
+                </li>
+              <li *ngIf="isLoggedIn" class="nav-item ">
+                  <a class="nav-link currency font-weight-bold">EUR {{calculateEUR()}}</a>
+                </li>
             <li *ngIf="isLoggedIn" class="nav-item">
-              <a href="#" class="nav-link">{{loggedInUser}}</a>
-            </li>
-            <li *ngIf="isLoggedIn" class="nav-item">
-                <a routerLink="/settings" class="nav-link">Settings</a>
-              </li>
-            <li *ngIf="isLoggedIn" class="nav-item">
-                <a href="#" (click)="onLogoutClick()" class="nav-link">Logout</a>
+                <a routerLink="/login" (click)="onLogoutClick()" class="nav-link">Выход</a>
               </li>
           </ul> 
          </div>

@@ -1,0 +1,69 @@
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-8">
+            <h3 class="">Расходы</h3> <hr>
+            <app-m-categories [isEdit]=true></app-m-categories>
+            <div class="m-3 ">
+              <div class="card ma-3 dashed" style="width: 14rem;">  
+                <div class="card-body text-center">
+                  <h6 class="card-title text-secondary">Добавьте новую категорию расходов: </h6>       
+                  <form #f2="ngForm">
+                      <div class="mb-2">
+                    <input 
+                    #categoryInput
+                    type="text" 
+                    class=" form-control hren"            
+                    aria-label="Small" 
+                    aria-describedby="inputGroup-sizing-sm"            
+                    name="categoryName"
+                    ngModel
+                    placeholder="Enter a name:"                        
+                    required               
+                  >     
+                  </div>
+                    <input 
+                    #moneyLimit
+                    type="number" 
+                    class=" form-control hren"            
+                    aria-label="Small" 
+                    aria-describedby="inputGroup-sizing-sm"            
+                    name="moneyLimit"
+                    ngModel
+                    placeholder="Set a money limit: (Optional)"                            
+                  >    
+              <button [disabled]="!f2.valid" (click)=addCategory(categoryInput.value,moneyLimit.value) class="btn btn-success mr mt-3">+</button> 
+            </form>         
+                </div>     
+                  </div>
+              </div>  
+        </div>
+        <div class="col-12 col-sm-12 col-md-4">
+          <h3 class="">Последние операции</h3>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Категория</th>
+                  <th scope="col-4">Дата</th>
+                  <th scope="col">Сумма</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of expenses; index as i; even as isEven; odd as idOdd" [class.is-even]='isEven' [class.is-odd]='isOdd'>
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.name}}</td>
+                  <td>{{item.date.seconds * 1000| date:'medium'}}</td>
+                  <td>{{item.money | currency: item.currency:"symbol-narrow"}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 mb-3">
+            <h3 class=""> График расходов</h3>
+            <hr>
+            <app-pie-chart-categories></app-pie-chart-categories>
+          </div>
+          
+      </div>
+       
+    </div>

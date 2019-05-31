@@ -1,0 +1,74 @@
+<h2 class="text-center">Edit category</h2>
+<div class="ml-3 mr-3">
+<form (ngSubmit)='editCategory(f)' #f="ngForm" *ngIf="category">
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="fullname">Category name</label>
+      <input type="text"
+              [ngClass]="{'is-invalid': fullNameInput.errors && fullNameInput.touched}"
+              [(ngModel)]="category.name"
+              name="name"
+             class="form-control"
+             id="fullname"
+             #fullNameInput = "ngModel"
+             required>
+      <div [hidden]="!fullNameInput.errors?.required" class="invalid-feedback">Enter a valid name please</div>
+    </div>
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="money">Money</label>
+      <input type="number"
+              [ngClass]="{'is-invalid': fullNameMoney.errors && fullNameMoney.touched}"
+              [(ngModel)]="category.money"
+              name="money"
+             class="form-control"
+             id="money"
+             #fullNameMoney = "ngModel"
+             required>
+      <div [hidden]="!fullNameMoney.errors?.required" class="invalid-feedback">Enter a valid number please</div>
+    </div>
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="money">Money limit</label>
+      <input type="number"
+              [ngClass]="{'is-invalid': moneyLimit.errors && moneyLimit.touched}"
+              [(ngModel)]="category.moneyLimit"
+              name="moneyLimit"
+             class="form-control"
+             id="moneyLimit"
+             #moneyLimit = "ngModel"
+             required>
+      <div [hidden]="!moneyLimit.errors?.required" class="invalid-feedback">Enter a valid money limit please</div>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold" for="image">Image</label>        
+          <div class="d-flex flex-wrap mb-3 " *ngIf='page===1'>
+            <div class="m-2" style="width: 10rem;" *ngFor="let item of firstSlice">            
+                <img (click)="onImageClick(item)" src={{item}} alt="" width="100px" height="100px"> <br>
+                <i *ngIf="item===toggledItem" class="fa fa-check text-center  mt-2 mb-3 ml-5" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="d-flex flex-wrap mb-3" *ngIf='page===2'>
+            <div class="m-2" style="width: 10rem;" *ngFor="let item of secondSlice">
+                <img (click)="onImageClick(item)" src={{item}} alt="" width="100px" height="100px">    
+                <i *ngIf="item===toggledItem" class="fa fa-check text-center  mt-2 mb-3 ml-5" aria-hidden="true"></i>            
+            </div>
+        </div>
+        <div class="d-flex flex-wrap mb-3" *ngIf='page===3'>
+            <div class="m-2" style="width: 10rem;" *ngFor="let item of thirdSlice">
+                <img (click)="onImageClick(item)" src={{item}} alt="" width="100px" height="100px">
+                <i *ngIf="item===toggledItem" class="fa fa-check text-center  mt-2 mb-3 ml-5" aria-hidden="true"></i>
+            </div>
+          </div>
+          <ngb-pagination [collectionSize]="30" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+      </div>      
+
+    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Save</button>
+    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Go back</button>
+    <!-- <button (click)='deleteCategory()' [disabled]='f.invalid' class="btn btn-danger mt-4 mb-3 ml-2">Delete category</button> -->
+  </form>
+</div>
+
+
+

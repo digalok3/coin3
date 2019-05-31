@@ -19,6 +19,22 @@ import { environment } from 'src/environments/environment.prod';
 import { NavbarComponent } from './app/navbar/navbar.component';
 import { BudgetService } from './app/budgets/budget.service';
 import { CategoryService } from './app/categories/category.service';
+import { DashboardComponent } from './app/dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { EditCategoryComponent } from './app/categories/edit-category/edit-category.component';
+import { AddBudgetComponent } from './app/budgets/add-budget/add-budget.component';
+import { BudgetsDashboardComponent } from './app/budgets/budgets-dashboard/budgets-dashboard.component';
+import { IncomesPieChartComponent } from './app/incomes/incomes-pie-chart/incomes-pie-chart.component';
+import { DashboardCategoriesComponent } from './app/categories/dashboard-categories/dashboard-categories.component';
+import { EditBudgetComponent } from './app/budgets/edit-budget/edit-budget.component';
+import { FaqComponent } from './app/faq/faq.component';
+import { PieChartCategoriesComponent } from './app/categories/pie-chart-categories/pie-chart-categories.component';
+import { BalanceComponent } from './app/budgets/balance/balance.component';
+import { TransferModalComponent } from './app/budgets/transfer-modal/transfer-modal.component';
+
 
 
 @NgModule({
@@ -30,16 +46,28 @@ import { CategoryService } from './app/categories/category.service';
     MCategoriesComponent,
     RegisterComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent,
+    EditCategoryComponent,
+    AddBudgetComponent,
+    BudgetsDashboardComponent,
+    IncomesPieChartComponent,
+    DashboardCategoriesComponent,
+    EditBudgetComponent,
+    PieChartCategoriesComponent,
+    BalanceComponent,
+    TransferModalComponent,
   ],
-  imports: [  
-
-BrowserModule,
+  imports: [
+  BrowserModule,
+     NgbModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'coin2'),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    ChartsModule,
+    AngularFireStorageModule
   ],
   providers: [AuthService, BudgetService, CategoryService],
   bootstrap: [AppComponent]

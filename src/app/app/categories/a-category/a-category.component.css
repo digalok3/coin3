@@ -1,0 +1,35 @@
+.dashed {
+    border: dashed;   
+    border-width: thin;
+    border-radius: 20px;
+    color: darkgray; 
+}
+
+.border-radius {
+    border-radius: 20px;     
+}
+
+.hren {
+    font-size: 0.7rem;
+}
+
+input {
+    background-color: white;   
+    border-width: 1px;
+}
+
+img {
+  border-radius: 50%;
+  border-color: blue
+}
+
+.fa {
+    cursor: pointer;
+}
+
+.hrenota {
+    background-color: rgba(91,192,222,0.25);    
+    
+}
+
+

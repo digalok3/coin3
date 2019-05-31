@@ -1,11 +1,6 @@
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { IncomeModel } from '../a-budget/a-budget.model';
-import { BudgetModel } from './../a-budget/a-budget.model';
-import { dbBudgets, dbBudgetsDates } from '../../fakedb/fakeDb';
-import { AlertService } from './../../commonServices/alert-service.service';
-import { NgForm } from '@angular/forms';
-import { AuthService } from './../../auth/auth.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { BudgetService } from './../budget.service';
+
 
 
 @Component({
@@ -14,32 +9,24 @@ import { BudgetService } from './../budget.service';
   styleUrls: ['./m-budgets.component.css']
  
 })
-export class MBudgetsComponent implements OnInit {  
-  @ViewChild('f') addBudgetForm: NgForm;
+export class MBudgetsComponent implements OnInit {
 
   budgets: any;
-  incomes: IncomeModel[] = dbBudgetsDates;
+
+  @Input()
+  isEdit: boolean;
+
 
   constructor(
-    private alertService: AlertService,
-    private authService: AuthService,
     private budgetService: BudgetService
   ) {
      }
 
   ngOnInit() {
-    this.authService.getBudgets().subscribe(data => 
-      this.budgets = data);
-   
+    this.budgetService.getBudgets().subscribe(data => {
+      this.budgets = data;
+    })
   }
-  
-  addBudget(): void {
-     console.log(this.authService.authenticated) 
-     console.log(this.authService.currentUserId
-      ) 
-    // this.budgetService.addBudget({name: this.addBudgetForm.value.budgetName, money: 0, date: new Date});
-    // this.alertService.alertOk('Budget has just added!');
-    // this.addBudgetForm.reset();
-  } 
 
+ 
 }

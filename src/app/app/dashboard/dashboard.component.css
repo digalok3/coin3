@@ -1,0 +1,17 @@
+.hint {
+    color: green;
+}
+
+.link {
+    color: rgba(91,192,222,0.5);   
+    cursor: pointer;
+}
+
+.card {
+    border-style: dashed;    
+}
+
+.pointer { 
+    cursor: pointer;
+}
+
