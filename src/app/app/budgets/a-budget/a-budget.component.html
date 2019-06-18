@@ -4,7 +4,7 @@
         <i  routerLink="/budget/edit/{{budget.id}}" class="fa fa-pencil " 
         aria-hidden="true"></i>
         <i (click)=deleteBudget(budgetItemInput.id) class="fa fa-times ml-2" aria-hidden="true"></i>
-        <i class="ml-2 fa fa-exchange"  (click)="open(content)" aria-hidden="true"></i>
+        <!-- <i class="ml-2 fa fa-exchange"  (click)="open(content)" aria-hidden="true"></i> -->
       </div>
       
       <div class="card-body text-center ">
@@ -29,10 +29,6 @@
                   (click)=plusMoney(budgetItemInput.value,budgetItemInput.id,budgetItemInput.name)
                      class="btn btn-info mr-3"               
                      >+</button>
-               <!--   <button type='reset'
-                  (click)=minusMoney(budgetItemInput.value,budgetItemInput.id)
-                    class="btn btn-primary" 
-                    >-</button> -->
                 </div>
               </form>  
           </div>   
@@ -40,7 +36,7 @@
     </div>  
 </div> 
 
-<ng-template #content let-modal>
+<!-- <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Перевод между счетами</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -100,11 +96,11 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
-</ng-template>
+</ng-template> -->
 
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
 
-<hr>
+<!-- <hr> -->
 
 <!-- <pre>{{closeResult}}</pre> -->
 

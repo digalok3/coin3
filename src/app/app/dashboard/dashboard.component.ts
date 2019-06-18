@@ -28,13 +28,14 @@ export class DashboardComponent implements OnInit {
 
   closeHint() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this! All hints will disappear!",
+      title: 'Вы уверены?',
+      text: "Вы не сможете вернуть подсказки обратно!",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#5bc0de',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Удалить',
+      cancelButtonText: 'Отменить операцию'
     })
     .then((result) => {
       if (result.value) {

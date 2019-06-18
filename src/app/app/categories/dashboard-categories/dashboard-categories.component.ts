@@ -34,7 +34,7 @@ export class DashboardCategoriesComponent implements OnInit {
       moneyLimit: _moneyLimit > 0 ? _moneyLimit: 0,
       photoURL: ''
     });
-    this.alertService.alertOk('Category has been added!');
+    this.alertService.alertOk('Категория успешно добавлена!');
     this.addCategoryForm.reset();
   }
 }

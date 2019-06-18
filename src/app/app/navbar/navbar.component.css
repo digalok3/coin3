@@ -1,3 +1,6 @@
-.currency {
-    color: green
+.nav-link.usd {
+    color: green;
+}
+.nav-link.eur {
+    color: darkblue;
 }

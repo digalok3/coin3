@@ -1,9 +1,9 @@
-<h2 class="text-center">Edit budget</h2>
+<h2 class="text-center">Изменить счет</h2>
 <div class="ml-3 mr-3">
 <form (ngSubmit)='editBudget(f)' #f="ngForm" *ngIf="budget">
 
     <div class="form-group">
-      <label class="font-weight-bold" for="fullname">Budget name</label>
+      <label class="font-weight-bold" for="fullname">Имя счета</label>
       <input type="text"
               [ngClass]="{'is-invalid': fullNameInput.errors && fullNameInput.touched}"
               [(ngModel)]="budget.name"
@@ -12,11 +12,11 @@
              id="fullname"
              #fullNameInput = "ngModel"
              required>
-      <div [hidden]="!fullNameInput.errors?.required" class="invalid-feedback">Enter a valid name please</div>
+      <div [hidden]="!fullNameInput.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
     </div>
 
     <div class="form-group">
-      <label class="font-weight-bold" for="money">Amount</label>
+      <label class="font-weight-bold" for="money">Сумма</label>
       <input type="number"
               [ngClass]="{'is-invalid': fullNameMoney.errors && fullNameMoney.touched}"
               [(ngModel)]="budget.money"
@@ -25,11 +25,11 @@
              id="money"
              #fullNameMoney = "ngModel"
              required>
-      <div [hidden]="!fullNameMoney.errors?.required" class="invalid-feedback">Enter a valid number please</div>
+      <div [hidden]="!fullNameMoney.errors?.required" class="invalid-feedback">Введите число</div>
     </div>
 
     <div class="form-group">
-      <label class="font-weight-bold" for="currency">Currency</label>
+      <label class="font-weight-bold" for="currency">Валюта</label>
       <select 
               #selectedCurrency
               type="text"
@@ -45,8 +45,8 @@
              </option>
              </select>
     </div>
-    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Save</button>
-    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Go back</button>
+    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
+    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Назад</button>
    </form> 
 
 </div>

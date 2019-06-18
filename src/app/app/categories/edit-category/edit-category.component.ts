@@ -57,14 +57,14 @@ export class EditCategoryComponent implements OnInit {
     if (this.category.photoURL!=this.toggledItem) {
       this.categoryService.updateCategory(this.editCategoryForm.value, this.id, this.toggledItem)
       .then(()=> {
-        this.alertService.toast('The category has been changed')
-        this.router.navigateByUrl('/')
+        this.alertService.toast('Категория успешно изменена!')
+        this.router.navigateByUrl('/categories')
       })
     }
     else {
       this.categoryService.updateCategory(this.editCategoryForm.value, this.id, this.category.photoURL)
       .then(()=>{
-        this.alertService.toast('The category has been changed!')
+        this.alertService.toast('Категория успешно изменена!')
         this.router.navigateByUrl('/categories')
       })
       

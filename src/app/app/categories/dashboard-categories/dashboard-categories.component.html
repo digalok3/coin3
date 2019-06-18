@@ -17,7 +17,7 @@
                     aria-describedby="inputGroup-sizing-sm"            
                     name="categoryName"
                     ngModel
-                    placeholder="Enter a name:"                        
+                    placeholder="Введите название:"                        
                     required               
                   >     
                   </div>
@@ -29,7 +29,7 @@
                     aria-describedby="inputGroup-sizing-sm"            
                     name="moneyLimit"
                     ngModel
-                    placeholder="Set a money limit: (Optional)"                            
+                    placeholder="Установите лимит:"                            
                   >    
               <button [disabled]="!f2.valid" (click)=addCategory(categoryInput.value,moneyLimit.value) class="btn btn-success mr mt-3">+</button> 
             </form>         
@@ -37,6 +37,7 @@
                   </div>
               </div>  
         </div>
+
         <div class="col-12 col-sm-12 col-md-4">
           <h3 class="">Последние операции</h3>
           <table class="table">
@@ -49,7 +50,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of expenses; index as i; even as isEven; odd as idOdd" [class.is-even]='isEven' [class.is-odd]='isOdd'>
+                <tr *ngFor="let item of expenses; index as i; even as isEven; odd as idOdd " [class.is-even]='isEven' [class.is-odd]='isOdd'>
                   <th scope="row">{{i+1}}</th>
                   <td>{{item.name}}</td>
                   <td>{{item.date.seconds * 1000| date:'medium'}}</td>

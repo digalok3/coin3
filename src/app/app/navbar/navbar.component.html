@@ -28,15 +28,19 @@
             </li>            -->
               <li *ngIf="isLoggedIn" class="nav-item">
                   <a class="nav-link">{{loggedInUser}}</a>
-                </li>
-              <li *ngIf="isLoggedIn" class="nav-item ">
-                  <a class="nav-link currency font-weight-bold">USD {{calculateUSD()}}</a>
-                </li>
-              <li *ngIf="isLoggedIn" class="nav-item ">
-                  <a class="nav-link currency font-weight-bold">EUR {{calculateEUR()}}</a>
-                </li>
+                </li>              
             <li *ngIf="isLoggedIn" class="nav-item">
                 <a routerLink="/login" (click)="onLogoutClick()" class="nav-link">Выход</a>
+              </li>
+            <li *ngIf="isLoggedIn" class="nav-item">
+                <a class="nav-link"> </a>
+              </li>
+
+              <li *ngIf="isLoggedIn" class="nav-item">
+                <a class="nav-link usd font-weight-bold">USD {{calculateUSD()}}</a>
+              </li>
+            <li *ngIf="isLoggedIn" class="nav-item eur">
+                <a class="nav-link eur font-weight-bold">EUR {{calculateEUR()}}</a>
               </li>
           </ul> 
          </div>

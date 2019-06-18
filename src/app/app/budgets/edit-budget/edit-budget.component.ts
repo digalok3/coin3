@@ -39,7 +39,7 @@ export class EditBudgetComponent implements OnInit {
 
   editBudget() {
     this.budgetService.updateBudget(this.editCategoryForm.value, this.id).then(()=> {
-    this.alertService.toast('The budget has been changed!')
+    this.alertService.toast('Счет успешно изменен!')
     this.router.navigateByUrl('/budgets')})    
 
   }

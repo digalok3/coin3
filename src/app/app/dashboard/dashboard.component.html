@@ -10,7 +10,7 @@
         <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
         <h1>Подсказка!</h1>
     </div> 
-     Здесь вы будете видеть ваш текущий баланс по разным счетам(бюджетам). Попробуйте добавить деньги в один из бюджетов.
+     Здесь вы будете видеть ваш текущий баланс по разным счетам, а также вести учет всех доходов. Перейдите к <strong class='link' routerLink="/categories" nav>Счета</strong> и вы сможете увидеть более детальную информацию по вашим счетам, также сможете откорректировать существующие счета или добавить новые!
      <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
 </div>
 
@@ -20,10 +20,10 @@
 <div *ngIf='isFirstLoggedIn' class="ml-4 hint mb-4">
         <div>
             <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
-            <h1>Hint!</h1>
+            <h1>Подсказка!</h1>
         </div> 
-         *This is categories. You can add here a category of expenses e.g. 'Food', 'Rent', 'Car'. You can also choose the budget from which the money will be withdrawn. Go to <strong class='link' routerLink="/categories" nav>Categories</strong>  and there you will be able to add your own categories and change the existing ones.(You will not see this message again. It will disappear after second login...)
-         <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i>
+         Здесь вы будете видеть ваши категории расходов. Все очень просто - вводите сумму по категории, выбираете из какого бюджета списать эту сумму. Перейдите к <strong class='link' routerLink="/categories" nav>Категории</strong> и вы сможете увидеть более детальную информацию по вашим категориям, также сможете откорректировать существующие категории и добавить новые!
+         <i (click)='closeHint()' class=" pointer fa fa-times" aria-hidden="true"></i> 
     </div>
  
 

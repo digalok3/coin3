@@ -20,7 +20,7 @@ export class AddBudgetComponent implements OnInit {
 
   addBudget(): void {
     this.budgetService.addBudget({name: this.addBudgetForm.value.budgetName, money: 0, date: new Date, currency: 'RUB'});
-    this.alertService.alertOk('Budget has been added!');
+    this.alertService.alertOk('Новый счет успешно добавлен!');
     this.addBudgetForm.reset();
   }
 }

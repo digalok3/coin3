@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password)
     .then(res => {
       if(this.authService.authenticated) {
-        this.alertService.alertOk('Now you are logged in!');
+        this.alertService.alertOk('Вы вошли в свой аккаунт!');
         this.router.navigate(['/'])
       }
     })
     .catch(err => {
-      this.alertService.alertOk('Something went wrong!');
+      this.alertService.alertOk('Что-то пошло не так!');
     });
   }
 

@@ -6,3 +6,11 @@ img {
 .fa {
   color:green;
 }
+
+.pagination .page-link {
+  border-top-style: none !important;
+  border-style: none !important;
+  border-bottom-style: none !important;
+  background-color: #f6f6f6 !important;
+  color: #5bc0de !important;
+}

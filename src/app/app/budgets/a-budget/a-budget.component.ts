@@ -43,43 +43,45 @@ export class ABudgetComponent implements OnInit {
 
   deleteBudget(id: string) {
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Вы уверены?',
+        text: "Вы не сможете вернуть счет обратно!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#5bc0de',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Удалить',
+        cancelButtonText:
+          'Отменить операцию'
       })
       .then((result) => {
         if (result.value) {
           this.budgetService.deleteBudget(id)
-          this.alertService.toast('The budget has been removed')
+          this.alertService.toast('Счет был успешно удален')
         }
       });
     }
 
-    hren() {
-      console.log('hrehre')
-    }
+    // hren() {
+    //   console.log('hrehre')
+    // }
 
-    open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
+    // open(content) {
+    //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    //     this.closeResult = `Closed with: ${result}`;
+    //   }, (reason) => {
+    //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //   });
+    // }
   
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }
+    // private getDismissReason(reason: any): string {
+    //   if (reason === ModalDismissReasons.ESC) {
+    //     return 'by pressing ESC';
+    //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    //     return 'by clicking on a backdrop';
+    //   } else {
+    //     return  `with: ${reason}`;
+    //   }
+    // }
   }
 
 

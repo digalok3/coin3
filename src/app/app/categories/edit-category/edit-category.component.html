@@ -1,9 +1,9 @@
-<h2 class="text-center">Edit category</h2>
+<h2 class="text-center">Изменить категорию</h2>
 <div class="ml-3 mr-3">
 <form (ngSubmit)='editCategory(f)' #f="ngForm" *ngIf="category">
 
     <div class="form-group">
-      <label class="font-weight-bold" for="fullname">Category name</label>
+      <label class="font-weight-bold" for="fullname">Категория</label>
       <input type="text"
               [ngClass]="{'is-invalid': fullNameInput.errors && fullNameInput.touched}"
               [(ngModel)]="category.name"
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-      <label class="font-weight-bold" for="money">Money</label>
+      <label class="font-weight-bold" for="money">Сумма</label>
       <input type="number"
               [ngClass]="{'is-invalid': fullNameMoney.errors && fullNameMoney.touched}"
               [(ngModel)]="category.money"
@@ -29,7 +29,7 @@
     </div>
 
     <div class="form-group">
-      <label class="font-weight-bold" for="money">Money limit</label>
+      <label class="font-weight-bold" for="money">Лимит</label>
       <input type="number"
               [ngClass]="{'is-invalid': moneyLimit.errors && moneyLimit.touched}"
               [(ngModel)]="category.moneyLimit"
@@ -38,11 +38,11 @@
              id="moneyLimit"
              #moneyLimit = "ngModel"
              required>
-      <div [hidden]="!moneyLimit.errors?.required" class="invalid-feedback">Enter a valid money limit please</div>
+      <div [hidden]="!moneyLimit.errors?.required" class="invalid-feedback">Введите денежный лимит в цифровом формате</div>
     </div>
 
     <div class="form-group">
-        <label class="font-weight-bold" for="image">Image</label>        
+        <label class="font-weight-bold" for="image">Изображение</label>        
           <div class="d-flex flex-wrap mb-3 " *ngIf='page===1'>
             <div class="m-2" style="width: 10rem;" *ngFor="let item of firstSlice">            
                 <img (click)="onImageClick(item)" src={{item}} alt="" width="100px" height="100px"> <br>
@@ -64,8 +64,8 @@
           <ngb-pagination [collectionSize]="30" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
       </div>      
 
-    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Save</button>
-    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Go back</button>
+    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
+    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Назад</button>
     <!-- <button (click)='deleteCategory()' [disabled]='f.invalid' class="btn btn-danger mt-4 mb-3 ml-2">Delete category</button> -->
   </form>
 </div>
