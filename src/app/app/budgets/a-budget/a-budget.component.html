@@ -1,5 +1,6 @@
-<div class="d-flex flex-wrap "> 
-    <div class="card m-3 border-radius"  style="width: 9rem;">
+<div (drop)="heyDrop($event,budget.id)" (dragover)="allowDrop($event,budgetItemInput.id)" draggable="true" (dragstart)="dragStartHey($event,budgetItemInput.id)" (dragleave)="dragLeaveHey($event)" (dragend)="dragEndHey($event)" (dragenter)="dragEnterHey($event)">
+  <div class="d-flex flex-wrap "> 
+    <div [ngClass]="cardClasses()"  style="width: 9rem;">
       <div *ngIf='isEdit' class="text-right mt-2 mr-2">
         <i  routerLink="/budget/edit/{{budget.id}}" class="fa fa-pencil " 
         aria-hidden="true"></i>
@@ -8,7 +9,7 @@
       </div>
       
       <div class="card-body text-center ">
-        <h6 class="card-title">{{budget.name}}</h6>        
+        <h6 id='hren'  class="card-title">{{budget.name}}</h6>        
         <p class="card-text">{{budget.money|currency:budget.currency:"symbol-narrow"}}</p>
           <div class=" input-group input-group-sm ">
               <div class="input-group-prepend ">             
@@ -35,6 +36,12 @@
       </div>
     </div>  
 </div> 
+</div>
+
+<!-- <div > Hren hren</div> -->
+
+
+
 
 <!-- <ng-template #content let-modal>
   <div class="modal-header">

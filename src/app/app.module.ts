@@ -34,6 +34,8 @@ import { FaqComponent } from './app/faq/faq.component';
 import { PieChartCategoriesComponent } from './app/categories/pie-chart-categories/pie-chart-categories.component';
 import { BalanceComponent } from './app/budgets/balance/balance.component';
 import { TransferModalComponent } from './app/budgets/transfer-modal/transfer-modal.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -57,6 +59,7 @@ import { TransferModalComponent } from './app/budgets/transfer-modal/transfer-mo
     PieChartCategoriesComponent,
     BalanceComponent,
     TransferModalComponent,
+    
   ],
   imports: [
   BrowserModule,
@@ -67,7 +70,9 @@ import { TransferModalComponent } from './app/budgets/transfer-modal/transfer-mo
     AngularFirestoreModule,
     AngularFireAuthModule,
     ChartsModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
+    
   ],
   providers: [AuthService, BudgetService, CategoryService],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { AlertService } from './../commonServices/alert-service.service';
+import { CurrenciesService } from './../currencies.service';
 
 
 @Component({
@@ -15,11 +16,13 @@ export class NavbarComponent implements OnInit {
   showRegister: boolean;
   rates: any;
   EUR: number;
+  USD: number;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private currencies: CurrenciesService
   ) { }
 
   ngOnInit() {
@@ -31,25 +34,14 @@ export class NavbarComponent implements OnInit {
           this.isLoggedIn = false;
         }
     });
-
-    fetch('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').then(res=> 
-    res.json())
-    .then(resp => this.rates = resp)
+    
+    this.EUR = this.currencies.calculateEUR()
+    this.USD = this.currencies.calculateUSD()
+    this.currencies.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> this.rates=val)
+      
   }
 
-    calculateUSD() {
-      if(this.rates) {
-        return (Math.floor((this.rates.rates.RUB)*100)/100)
-      }
-    }
-
-
-    calculateEUR() {
-      if(this.rates) {
-        return (Math.floor((1 / this.rates.rates.EUR*this.rates.rates.RUB)*100)/100)
-      }
-
-    }
+  
 
   onLogoutClick() {
     this.authService.logout();

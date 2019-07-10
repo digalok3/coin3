@@ -106,5 +106,18 @@ export class ACategoryComponent implements OnInit {
     });
   }
 
+  heyDrop(ev: any) {
+    ev.preventDefault()
+    const hren = ev.dataTransfer.getData('Text')
+    console.log(hren)
+    console.log('hrenonta') 
+  
+       }
+
+    allowDrop(ev: any) {
+    ev.preventDefault()
+  
+  console.log('its working')
+}
 
 }

@@ -3,8 +3,7 @@ import { BudgetModel } from './a-budget.model';
 import { BudgetService } from './../budget.service';
 import { AlertService } from './../../commonServices/alert-service.service';
 import Swal from 'sweetalert2';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-a-budget',
@@ -14,20 +13,34 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 export class ABudgetComponent implements OnInit {
   closeResult: string;
+
   @Input()
   budget: BudgetModel;
 
   @Input()
   isEdit: boolean;
 
+  img: any;
+
+  tempId: any;
+
+  cardStyle: {};
+
+
   constructor(
     private budgetService: BudgetService,
     private alertService: AlertService,
-    private modalService: NgbModal
+    private router: Router
     ) {
       }
 
   ngOnInit() {
+    this.img = new Image(10,10);
+    this.img.src = 'assets/dollar2.png'
+    this.cardStyle = {
+      'card': true
+    }
+
     
   }
 
@@ -44,7 +57,7 @@ export class ABudgetComponent implements OnInit {
   deleteBudget(id: string) {
       Swal.fire({
         title: 'Вы уверены?',
-        text: "Вы не сможете вернуть счет обратно!",
+        text: 'Вы не сможете вернуть счет обратно!',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#5bc0de',
@@ -61,39 +74,73 @@ export class ABudgetComponent implements OnInit {
       });
     }
 
-    // hren() {
-    //   console.log('hrehre')
-    // }
+    dragStartHey(ev: any, id: string) {        
+        this.tempId = id; 
+        ev.dataTransfer.setData('text', id)      
+        ev.dataTransfer.setDragImage(this.img, 0, 0) 
+        if(this.tempId===id) {
+          this.cardStyle = {
+            'card': false,
+            'card2': true
+          }       
+        }
 
-    // open(content) {
-    //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    //     this.closeResult = `Closed with: ${result}`;
-    //   }, (reason) => {
-    //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    //   });
-    // }
-  
-    // private getDismissReason(reason: any): string {
-    //   if (reason === ModalDismissReasons.ESC) {
-    //     return 'by pressing ESC';
-    //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    //     return 'by clicking on a backdrop';
-    //   } else {
-    //     return  `with: ${reason}`;
-    //   }
-    // }
+    }
+
+
+    heyDrop(ev: any, idTwo: string) {
+      ev.preventDefault()
+      if (idTwo !== this.tempId) {
+        const  data = ev.dataTransfer.getData('text');
+        this.budgetService.transferMoney.subscribe(val=> console.log)
+        this.budgetService.transferMoney.next({id: idTwo})
+        this.router.navigate([`budget/transfer/${data}`])
+        this.cardStyle ={
+          'card': true
+        }
+      }
+         }
+
+
+      allowDrop(ev: any, id: string) {
+        ev.preventDefault()
+        if(this.tempId!==id) {
+          this.cardStyle = {
+            'card': false,
+            'card3': true
+          }   
+          
+        }   
+
+        
+    }
+
+    dragLeaveHey (ev: any) {
+      if(this.tempId!==this.budget.id) {
+        this.cardStyle = {
+          'card': true,
+          'card3': false
+        }
+      }      
+    
+   }
+
+    dragEnterHey (ev: any) {    
+
+    }
+
+    dragEndHey (ev:any) {      
+      this.cardStyle = {
+        'card': true
+      }
+      this.tempId = ''
+    }
+
+    cardClasses() {
+      return this.cardStyle
+    }
+
+
   }
 
 
-    
-
-
-  // plusMoney(value: number, id: number): void {
-  //   this.obj1[id].money += Number(value);
-  //   this.obj2 = [...this.obj2, {date: new Date(), money: Number(value)}];
-  // }
-
-  // minusMoney(value: number, id: number): void {
-  //   this.obj1[id].money -= Number(value);
-  //   this.obj2 = [...this.obj2, {date: new Date(), money: Number(value)}];    
-  // }

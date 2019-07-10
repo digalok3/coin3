@@ -1,4 +1,4 @@
-    <div class="m-3 ">      
+    <div (drop)="heyDrop($event)" (dragover)="allowDrop($event)" class="m-3 ">      
       <div class="card border-radius hrenota" style="width: 16rem;">        
         <div class="card-body  text-center">
           <div *ngIf='isEdit' class="text-right">

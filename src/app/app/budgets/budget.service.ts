@@ -5,6 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -13,6 +14,7 @@ import '@firebase/firestore';
 })
 export class BudgetService  {
   currentId: any;
+  transferMoney = new BehaviorSubject<any>({id: ''});
 
   constructor(
     private authService: AuthService,
@@ -24,6 +26,9 @@ export class BudgetService  {
       this.afDB.collection('users').doc(`${this.authService.currentUserId}`).collection('budgets').add({...budget});
     
    }
+
+ 
+
 
   getBudgets()  {
         return this.afDB.collection('users').doc(`${this.authService.currentUserId}`).collection('budgets').snapshotChanges().pipe(

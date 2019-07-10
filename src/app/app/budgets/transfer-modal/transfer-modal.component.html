@@ -1,0 +1,60 @@
+<h2 class="text-center">Перевести деньги между счетами</h2>
+<div class="ml-3 mr-3">
+<form (ngSubmit)='saveForm(f)' #f="ngForm" *ngIf="budgetOne && budgetTwo">
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="fullname">Имя счета</label>
+      <input type="text"
+              [ngClass]="{'is-invalid': fullNameInput.errors && fullNameInput.touched}"
+              [(ngModel)]="budgetOne.name"
+              name="name"
+             class="form-control"
+             id="fullname"
+             #fullNameInput = "ngModel"
+             readonly
+             required>
+      <div [hidden]="!fullNameInput.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
+      <label for="">Валюта: {{budgetOne.currency}}</label>
+    </div>
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="fullname2">Имя счета</label>
+      <input type="text"
+            [ngClass]="{'is-invalid': fullNameInput2.errors && fullNameInput2.touched}"
+            [(ngModel)]="budgetTwo.name"
+              name="name2"
+             class="form-control"
+             id="fullname2"
+             #fullNameInput2 = "ngModel"  
+             readonly         
+             required>
+      <div [hidden]="!fullNameInput2.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
+      <label for="">Валюта: {{budgetTwo.currency}}</label>
+    </div>
+
+    <div class="form-group">
+      <label class="font-weight-bold" for="fullname3">Сумма</label>
+      <input type="text"
+            [ngClass]="{'is-invalid': fullNameInput2.errors && fullNameInput2.touched}"
+            (ngModel)="sum"
+            name="name3"
+            type="number"
+             class="form-control"
+             id="fullname3"
+             #fullNameInput3 = "ngModel"     
+             placeholder="Введите сумму: "       
+             required
+             autofocus>
+      <label for="" *ngIf="rates">1{{budgetOne.currency}}={{currencyDivision()}}</label>
+      <div [hidden]="!fullNameInput2.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
+    </div>
+
+
+    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
+    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Назад</button>
+   </form> 
+
+</div>
+
+
+

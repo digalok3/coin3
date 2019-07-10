@@ -21,4 +21,22 @@ input {
 
 .card {
     background-color: rgba(91,192,222,0.25);
+    margin: 0.7rem;
+    border-radius: 20px; 
+}
+
+.card2 {
+    background-color:rgba(236, 217, 217, 0.938);
+    margin: 0.7rem;
+    border-style: dashed;
+    border-radius: 20px; 
+    opacity: 0.35;
+}
+
+.card3 {
+    background-color: rgb(44, 240, 44);
+    margin: 0.7rem;
+    border-style: dashed;
+    border-radius: 20px; 
+    opacity: 0.8;
 }
