@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { BudgetService } from './../budget.service';
 import { Location } from '@angular/common';
 import { CurrenciesService } from './../../currencies.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -12,8 +13,9 @@ import { CurrenciesService } from './../../currencies.service';
   templateUrl: './transfer-modal.component.html',
   styleUrls: ['./transfer-modal.component.css']
 })
-export class TransferModalComponent implements OnInit {
+export class TransferModalComponent implements OnInit, OnDestroy {
   @ViewChild('f') transferForm: NgForm;
+  transferMoneySubscription: Subscription;
   id: string;
   closeResult: string;
   budgetOne: any;
@@ -33,7 +35,7 @@ export class TransferModalComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.budgetService.transferMoney.subscribe(val=> this.temporaryId=val.id)
+    this.transferMoneySubscription = this.budgetService.transferMoney.subscribe(val=> this.temporaryId=val.id)
   
     this.budgetService.getBudgets().subscribe(data=> {
       data.filter((val, i)=> {
@@ -54,14 +56,6 @@ export class TransferModalComponent implements OnInit {
   this.currencyService.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> {
     this.rates = val    
   })
-
-  // if (this.budgetOne && this.budgetTwo) {
-  //   this.currencyService.getRates(`https://openexchangerates.org/api/convert/1/${this.budgetOne.currency}/${this.budgetTwo.currency}?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7`).subscribe(val=>  console.log(val)
-  //   )
-  // }
-
-
-
   }
 
   goBack() {
@@ -74,7 +68,9 @@ export class TransferModalComponent implements OnInit {
   }
 
   currencyDivision() {
+  }
 
-    console.log(this.rates)
+  ngOnDestroy () {
+    this.transferMoneySubscription.unsubscribe()
   }
 }

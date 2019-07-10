@@ -1,16 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { CategoryService } from './../category.service';
 import { AlertService } from './../../commonServices/alert-service.service';
 import { NgForm } from '@angular/forms';
 import { IncomesServiceService } from '../../incomes/incomes-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-categories',
   templateUrl: './dashboard-categories.component.html',
   styleUrls: ['./dashboard-categories.component.css']
 })
-export class DashboardCategoriesComponent implements OnInit {
+export class DashboardCategoriesComponent implements OnInit, OnDestroy {
   @ViewChild('f2') addCategoryForm: NgForm;
+  private getExpensesSubscription: Subscription;
+
+  
 
   expenses: any;
 
@@ -21,10 +25,10 @@ export class DashboardCategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.incomesService.getExpenses().subscribe(data=>  
+    this.getExpensesSubscription = this.incomesService.getExpenses().subscribe(data=>  
       this.expenses=data
       )
-  }
+  }  
 
   addCategory(categoryName: string, _moneyLimit: number): void {
     this.categoryService.addCategory({
@@ -36,5 +40,9 @@ export class DashboardCategoriesComponent implements OnInit {
     });
     this.alertService.alertOk('Категория успешно добавлена!');
     this.addCategoryForm.reset();
+  }
+
+  ngOnDestroy(){
+    this.getExpensesSubscription.unsubscribe()
   }
 }

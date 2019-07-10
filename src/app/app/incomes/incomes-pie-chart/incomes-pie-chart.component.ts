@@ -1,17 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { IncomesServiceService } from './../incomes-service.service';
 import { BudgetService } from './../../budgets/budget.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-incomes-pie-chart',
   templateUrl: './incomes-pie-chart.component.html',
   styleUrls: ['./incomes-pie-chart.component.css']
 })
-export class IncomesPieChartComponent implements OnInit {
+export class IncomesPieChartComponent implements OnInit, OnDestroy {
   // Pie
+  getBudgetsSubscription: Subscription;
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
@@ -40,6 +42,7 @@ export class IncomesPieChartComponent implements OnInit {
   public incomesMoneys: any[];
   public incomesNames: any[];
   private budgets: any[]
+  
 
 
   constructor(
@@ -47,7 +50,7 @@ export class IncomesPieChartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.budgetService.getBudgets().subscribe(data=> {
+    this.getBudgetsSubscription = this.budgetService.getBudgets().subscribe(data=> {
       this.budgets = data;
       this.pieChartData = this.budgets.map((val)=> {
        return val.money;
@@ -65,6 +68,10 @@ export class IncomesPieChartComponent implements OnInit {
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
+  }
+
+  ngOnDestroy () {
+    this.getBudgetsSubscription.unsubscribe()
   }
  
 }

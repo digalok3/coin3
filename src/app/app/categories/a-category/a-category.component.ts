@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CategoryModel } from './a-category.model';
 import { BudgetModel } from './../../budgets/a-budget/a-budget.model';
-import { dbBudgets } from '../../fakedb/fakeDb';
 import { CategoryService } from './../category.service';
 import { BudgetService } from './../../budgets/budget.service';
 import { imagesArray } from '../../commonServices/images';
@@ -41,7 +40,6 @@ export class ACategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.photoUrl = `https://source.unsplash.com/weekly?${this.category.name}`;
     this.photoUrl = imagesArray(25)[11];
   }
 
@@ -109,15 +107,12 @@ export class ACategoryComponent implements OnInit {
   heyDrop(ev: any) {
     ev.preventDefault()
     const hren = ev.dataTransfer.getData('Text')
-    console.log(hren)
-    console.log('hrenonta') 
-  
        }
 
     allowDrop(ev: any) {
     ev.preventDefault()
   
-  console.log('its working')
+
 }
 
 }

@@ -37,10 +37,10 @@
               </li>
 
               <li *ngIf="isLoggedIn" class="nav-item">
-                <a class="nav-link usd font-weight-bold">USD {{USD}}</a>
+                <a class="nav-link usd font-weight-bold">USD {{calculateUSD()}}</a>
               </li>
             <li *ngIf="isLoggedIn" class="nav-item eur">
-                <a class="nav-link eur font-weight-bold">EUR {{EUR}}</a>
+                <a class="nav-link eur font-weight-bold">EUR {{calculateEUR()}}</a>
               </li>
           </ul> 
          </div>

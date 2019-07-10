@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 
@@ -11,9 +12,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./dashboard.component.css']})
 
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   profileUrl: any;
   isFirstLoggedIn: boolean = false
+  private isFirstLoginSubscription: Subscription;
  
 
   constructor(
@@ -23,7 +25,7 @@ export class DashboardComponent implements OnInit {
    }
 
    ngOnInit() {
-     this.afAuth.isFirstLogin.subscribe(val => this.isFirstLoggedIn = val);
+     this.isFirstLoginSubscription = this.afAuth.isFirstLogin.subscribe(val => this.isFirstLoggedIn = val);
   }
 
   closeHint() {
@@ -42,6 +44,10 @@ export class DashboardComponent implements OnInit {
         this.isFirstLoggedIn = false;
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.isFirstLoginSubscription.unsubscribe()
   }
 
 }

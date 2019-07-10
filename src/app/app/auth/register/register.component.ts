@@ -47,21 +47,21 @@ export class RegisterComponent implements OnInit {
           money: 0,
           progressBar: 0,
           moneyLimit: 1000,
-          photoURL: ''
+          photoURL: 'assets/unsplashImages/9.jpg'
         });
         this.categoryService.addCategory({
           name: "Машина",
           money: 0,
           progressBar: 0,
           moneyLimit: 1000,
-          photoURL: ''
+          photoURL: 'assets/unsplashImages/3.jpg'
         });
         this.categoryService.addCategory({
           name: "Квартплата",
           money: 0,
           progressBar: 0,
           moneyLimit: 1000,
-          photoURL: ''
+          photoURL: 'assets/unsplashImages/2.jpg'
         });
       })
     })  

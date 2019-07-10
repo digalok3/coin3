@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 import { CategoryModel } from './a-category/a-category.model';
-import { Router } from '@angular/router';
+
 
 
 @Injectable({

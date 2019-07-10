@@ -13,10 +13,9 @@ export class CurrenciesService implements OnInit{
 
   ngOnInit() {
 
-  fetch('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7')
-  .then(res=> res.json())
-  .then(val=> this.rates=val)  
-  console.log(this.rates)
+  // fetch('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7')
+  // .then(res=> res.json())
+  // .then(val=> this.rates=val)  
   }
 
   constructor(

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class ABudgetComponent implements OnInit {
-  closeResult: string;
+  closeResult: any;
 
   @Input()
   budget: BudgetModel;
@@ -92,7 +92,6 @@ export class ABudgetComponent implements OnInit {
       ev.preventDefault()
       if (idTwo !== this.tempId) {
         const  data = ev.dataTransfer.getData('text');
-        this.budgetService.transferMoney.subscribe(val=> console.log)
         this.budgetService.transferMoney.next({id: idTwo})
         this.router.navigate([`budget/transfer/${data}`])
         this.cardStyle ={

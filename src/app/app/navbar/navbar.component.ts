@@ -35,11 +35,15 @@ export class NavbarComponent implements OnInit {
         }
     });
     
-    this.EUR = this.currencies.calculateEUR()
-    this.USD = this.currencies.calculateUSD()
-    this.currencies.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> this.rates=val)
-      
-  }
+    // this.EUR = this.currencies.calculateEUR()
+    // this.USD = this.currencies.calculateUSD()
+    // this.currencies.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> this.rates=val)
+    fetch('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7')
+  .then(res=> res.json())
+  .then(val=> this.rates=val)  
+
+  }   
+  
 
   
 
@@ -48,5 +52,21 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = false;
     this.alertService.alertOk('Вы вышли из своего аккаунта!')
     this.router.navigate(['/login']);
+  }
+
+  
+  calculateUSD() {
+    if(this.rates) {
+    return  (Math.floor((this.rates.rates.RUB)*100)/100)
+    }
+  }
+  
+  
+  
+  calculateEUR() {
+    if(this.rates) {
+    return (Math.floor((1 / this.rates.rates.EUR*this.rates.rates.RUB)*100)/100)
+    }
+  
   }
 }
