@@ -27,9 +27,13 @@ img {
     cursor: pointer;
 }
 
-.hrenota {
-    background-color: rgba(91,192,222,0.25);    
-    
+.hrenota {   
+    background: linear-gradient(45deg, rgb(111, 133, 199), #C5DDE8);
 }
 
+
+.buttonHey {
+    background-color: rgb(33, 58, 135);
+    color: white;
+    ; }
 

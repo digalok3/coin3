@@ -5,6 +5,9 @@ import { BudgetService } from './../budget.service';
 import { Location } from '@angular/common';
 import { CurrenciesService } from './../../currencies.service';
 import { Subscription } from 'rxjs';
+// const _ = require('lodash');
+
+import _ from 'lodash'
 
 
 
@@ -54,8 +57,11 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   })
 
   this.currencyService.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> {
-    this.rates = val    
-  })
+    this.rates = val.rates
+    this.ratio = this.rates[this.budgetTwo.currency] / this.rates[this.budgetOne.currency]
+    this.ratio = (Math.floor((this.ratio)*100)/100)
+   
+})
   }
 
   goBack() {

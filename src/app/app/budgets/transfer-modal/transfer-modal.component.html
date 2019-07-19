@@ -1,5 +1,5 @@
 <h2 class="text-center">Перевести деньги между счетами</h2>
-<div class="ml-3 mr-3">
+<div class="ml-3 mr-3 container">
 <form (ngSubmit)='saveForm(f)' #f="ngForm" *ngIf="budgetOne && budgetTwo">
 
     <div class="form-group">
@@ -45,13 +45,14 @@
              placeholder="Введите сумму: "       
              required
              autofocus>
-      <label for="" *ngIf="rates">1{{budgetOne.currency}}={{currencyDivision()}}</label>
+      <label for="" *ngIf="rates">1{{budgetOne.currency}}={{ratio}}{{budgetTwo.currency}}</label> <br>
+      <label for=""> {{fullNameInput3.value}}{{budgetOne.currency}}={{ratio*fullNameInput3.value}}{{budgetTwo.currency}}</label>
       <div [hidden]="!fullNameInput2.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
     </div>
 
 
     <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
-    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Назад</button>
+    <button (click)='goBack()' type='button' class="btn buttonBack mt-4 mb-3 ml-1">Назад</button>
    </form> 
 
 </div>

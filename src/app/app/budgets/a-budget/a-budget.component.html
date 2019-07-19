@@ -10,7 +10,7 @@
       
       <div class="card-body text-center ">
         <h6 id='hren'  class="card-title">{{budget.name}}</h6>        
-        <p class="card-text">{{budget.money|currency:budget.currency:"symbol-narrow"}}</p>
+        <p class="card-text">{{budget.money | currency:budget.currency:"symbol-narrow"}}</p>
           <div class=" input-group input-group-sm ">
               <div class="input-group-prepend ">             
                 </div>
@@ -20,7 +20,7 @@
                 name={{budget.name}}
                 id={{budget.id}}                
                 type="number" 
-                class="form-control hren"  
+                class="form-control"  
                 aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                 placeholder=0
                 pattern="^[1-9]\d*$"  
@@ -28,7 +28,7 @@
                 <div class='mt-3 ml-3'>
                   <button type='reset'
                   (click)=plusMoney(budgetItemInput.value,budgetItemInput.id,budgetItemInput.name)
-                     class="btn btn-info mr-3"               
+                     class="btn mr-3 buttonHey"               
                      >+</button>
                 </div>
               </form>  

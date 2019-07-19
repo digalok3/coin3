@@ -61,11 +61,11 @@
                 <i *ngIf="item===toggledItem" class="fa fa-check text-center  mt-2 mb-3 ml-5" aria-hidden="true"></i>
             </div>
           </div>
-          <ngb-pagination [collectionSize]="30" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination class="paginationColor" [collectionSize]="30" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
       </div>      
 
     <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
-    <button (click)='goBack()' type='button' class="btn btn-warning mt-4 mb-3 ml-1">Назад</button>
+    <button (click)='goBack()' type='button' class="btn buttonBack mt-4 mb-3 ml-1">Назад</button>
     <!-- <button (click)='deleteCategory()' [disabled]='f.invalid' class="btn btn-danger mt-4 mb-3 ml-2">Delete category</button> -->
   </form>
 </div>

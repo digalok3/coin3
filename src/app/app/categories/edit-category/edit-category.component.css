@@ -7,10 +7,15 @@ img {
   color:green;
 }
 
-.pagination .page-link {
-  border-top-style: none !important;
-  border-style: none !important;
-  border-bottom-style: none !important;
-  background-color: #f6f6f6 !important;
-  color: #5bc0de !important;
+::ng-deep .page-link  { color: rgb(212, 221, 246) !important;
+background-color: rgb(45, 71, 147) }
+
+::ng-deep .page-item.active .page-link  { color: white !important;
+background-color: rgb(112, 131, 189) }
+
+
+
+.buttonBack {
+  background-color: rgb(45, 71, 147);
+  color: white;
 }
