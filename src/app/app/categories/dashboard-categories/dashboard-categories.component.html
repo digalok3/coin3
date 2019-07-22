@@ -54,7 +54,7 @@
                   <th scope="row">{{i+1}}</th>
                   <td>{{item.name}}</td>
                   <td>{{item.date.seconds * 1000| date:'medium'}}</td>
-                  <td>{{item.money | currency: item.currency:"symbol-narrow"}}</td>
+                  <td>{{item.money | currency: 'RUB':"symbol-narrow"}}</td>
                 </tr>
               </tbody>
             </table>

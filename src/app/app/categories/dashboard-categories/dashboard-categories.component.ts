@@ -13,9 +13,6 @@ import { Subscription } from 'rxjs';
 export class DashboardCategoriesComponent implements OnInit, OnDestroy {
   @ViewChild('f2') addCategoryForm: NgForm;
   private getExpensesSubscription: Subscription;
-
-  
-
   expenses: any;
 
   constructor(
@@ -26,8 +23,11 @@ export class DashboardCategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getExpensesSubscription = this.incomesService.getExpenses().subscribe(data=>  
-      this.expenses=data
+      this.expenses=data      
       )
+      setTimeout(() => {
+        console.log(this.expenses)
+      }, 3000);
   }  
 
   addCategory(categoryName: string, _moneyLimit: number): void {

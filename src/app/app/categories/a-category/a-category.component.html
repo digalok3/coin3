@@ -1,4 +1,4 @@
-    <div (drop)="heyDrop($event)" (dragover)="allowDrop($event)" class="m-3 ">      
+    <div (drop)="heyDrop($event)" (dragover)="allowDrop($event)" class="m-3 scaleHey ">      
       <div class="card border-radius hrenota" style="width: 16rem;">        
         <div class="card-body  text-center">
           <div *ngIf='isEdit' class="text-right">
@@ -33,7 +33,7 @@
                             class="custom-select hren" 
                             id={{category.id}}>   
                               <option                                         
-                               *ngFor="let budget of budgets">{{budget.name}}</option>
+                               *ngFor="let budget of newBudgetsArray">{{budget.name}}</option>
                              </select>
                           </div>
               </div>              

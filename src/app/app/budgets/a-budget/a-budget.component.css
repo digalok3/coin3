@@ -45,3 +45,9 @@ input {
     background-color: rgb(33, 58, 135);
     color: white;
     ; }
+
+.scaleHey:hover {
+    transform: scale(1.05);
+}
+
+.scaleHey { transition: all .2s ease-in-out; }

@@ -30,6 +30,7 @@ export class ACategoryComponent implements OnInit {
   isEdit: boolean;
 
   photoUrl: string;
+  newBudgetsArray: any;
 
 
   constructor(
@@ -40,10 +41,11 @@ export class ACategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.photoUrl = imagesArray(25)[11];
+    this.photoUrl = imagesArray(25)[11];    
+    this.newBudgetsArray = this.budgets.filter(val => val.currency === 'RUB') 
   }
 
-  addCategory(category: CategoryModel): void {
+  addCategory(category: CategoryModel,): void {
     this.serviceCategory.addCategory(category);
   }
 
@@ -116,3 +118,5 @@ export class ACategoryComponent implements OnInit {
 }
 
 }
+
+
