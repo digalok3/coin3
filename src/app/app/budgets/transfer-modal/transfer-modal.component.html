@@ -2,6 +2,7 @@
 <div class="ml-3 mr-3 container">
 <form (ngSubmit)='saveForm(f)' #f="ngForm" *ngIf="budgetOne && budgetTwo">
 
+
     <div class="form-group">
       <label class="font-weight-bold" for="fullname">Имя счета</label>
       <input type="text"
@@ -45,8 +46,16 @@
              placeholder="Введите сумму: "       
              required
              autofocus>
-      <label for="" *ngIf="rates">1{{budgetOne.currency}}={{ratio}}{{budgetTwo.currency}}</label> <br>
-      <label> {{fullNameInput3.value}}{{budgetOne.currency}}={{ratio*fullNameInput3.value | number}}{{budgetTwo.currency}}</label>
+
+             
+      <div *ngIf="loading" class="spinner-border text-primary mt-4" role="status">
+        <span class="sr-only">Loading...</span>
+      </div> 
+      <div *ngIf="!loading">
+          <label for="" *ngIf="rates&&budgetOne">1{{budgetOne.currency}}={{ratio}}{{budgetTwo.currency}}</label> <br>
+          <label *ngIf="rates&&budgetOne"> {{fullNameInput3.value}}{{budgetOne.currency}}={{ratio*fullNameInput3.value | number}}{{budgetTwo.currency}}</label>
+      </div>      
+      
       <div [hidden]="!fullNameInput2.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
     </div>
 
