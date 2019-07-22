@@ -46,12 +46,12 @@
              required
              autofocus>
       <label for="" *ngIf="rates">1{{budgetOne.currency}}={{ratio}}{{budgetTwo.currency}}</label> <br>
-      <label for=""> {{fullNameInput3.value}}{{budgetOne.currency}}={{ratio*fullNameInput3.value}}{{budgetTwo.currency}}</label>
+      <label> {{fullNameInput3.value}}{{budgetOne.currency}}={{ratio*fullNameInput3.value | number}}{{budgetTwo.currency}}</label>
       <div [hidden]="!fullNameInput2.errors?.required" class="invalid-feedback">Введите корректное имя!</div>
     </div>
 
 
-    <button type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
+    <button  type="submit" [disabled]='f.invalid' class="btn btn-success mt-4 mb-3">Сохранить</button>
     <button (click)='goBack()' type='button' class="btn buttonBack mt-4 mb-3 ml-1">Назад</button>
    </form> 
 

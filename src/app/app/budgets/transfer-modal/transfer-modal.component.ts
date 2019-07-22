@@ -1,13 +1,15 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { BudgetService } from './../budget.service';
 import { Location } from '@angular/common';
 import { CurrenciesService } from './../../currencies.service';
 import { Subscription } from 'rxjs';
-// const _ = require('lodash');
+import { AlertService } from './../../commonServices/alert-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 import _ from 'lodash'
+
 
 
 
@@ -29,11 +31,14 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   ratio: number;
 
 
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private budgetService: BudgetService,
     private _location: Location,
-    private currencyService: CurrenciesService
+    private currencyService: CurrenciesService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -54,14 +59,23 @@ export class TransferModalComponent implements OnInit, OnDestroy {
        this.budgetTwo = data[i]; 
       }
     })
+    
   })
+
+  
 
   this.currencyService.getRates('https://openexchangerates.org/api/latest.json?app_id=af1dbc1ac588491ba0e30dbf0b3c06c7').subscribe(val=> {
     this.rates = val.rates
     this.ratio = this.rates[this.budgetTwo.currency] / this.rates[this.budgetOne.currency]
-    this.ratio = (Math.floor((this.ratio)*100)/100)
-   
+    if(this.budgetOne.currency !== 'RUB') {
+      this.ratio = (Math.floor((this.ratio)*100)/100)
+    }
+    if(this.budgetOne.currency === 'RUB') {
+      this.ratio = (Math.floor((this.ratio)*1000)/1000)
+    }
+
 })
+
   }
 
   goBack() {
@@ -69,14 +83,21 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   }
 
   saveForm() {
-        console.log(this.transferForm.value)
+        this.budgetService.minusMoneyToABudget(this.budgetOne.id,this.transferForm.value.name3)
+        let sum  = this.transferForm.value.name3*this.ratio
+        let sum2 = Math.floor((sum)*100)/100
+        this.budgetService.plusMoneyToABudget2(this.budgetTwo.id, sum2)
+        this.alertService.toast('Деньги успешно переведены!')
+        this.router.navigateByUrl('/')
 
-  }
-
-  currencyDivision() {
-  }
+  } 
+ 
 
   ngOnDestroy () {
     this.transferMoneySubscription.unsubscribe()
   }
+
+  
+
+
 }

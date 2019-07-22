@@ -49,6 +49,10 @@ export class BudgetService  {
 // tslint:disable-next-line: max-line-length
     this.afDB.collection('users').doc(`${this.authService.currentUserId}`).collection(`incomes`).add({money: Number(value), date: new Date(), name: budgetName, currency: curCurrency });
   }
+  plusMoneyToABudget2(id: string, value: number) {
+// tslint:disable-next-line: max-line-length
+    this.afDB.collection('users').doc(`${this.authService.currentUserId}`).collection('budgets').doc(`${id}`).update({money: firebase.firestore.FieldValue.increment(Number(value))});
+  }
 
   minusMoneyToABudget(id: string, value: number) {
 // tslint:disable-next-line: max-line-length
