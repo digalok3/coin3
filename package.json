@@ -31,7 +31,7 @@
     "firebase": "^5.9.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "ng2-charts": "^2.2.2",
     "popper.js": "^1.15.0",
     "rxjs": "^6.3.3",
